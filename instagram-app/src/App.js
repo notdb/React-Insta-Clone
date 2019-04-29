@@ -28,7 +28,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <SearchBar />
-        <PostContainer />
+        {this.state.dummy.map(obj => (
+          <PostContainer key={obj.timestamp} dummyObj={obj} />
+        ))}
       </div>
     );
   }

@@ -5,8 +5,10 @@ import CommentSection from "../CommentSection/CommentSection.js";
 function PostContainer(props) {
   return (
     <div className="post-container">
-      This is the post container
-      <CommentSection />
+      {props.dummyObj.username}
+      {props.dummyObj.comments.map(comment => (
+        <CommentSection key={comment.id} comment={comment} />
+      ))}
     </div>
   );
 }
