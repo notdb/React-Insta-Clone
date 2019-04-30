@@ -4,8 +4,25 @@ import "./PostContainer.css";
 class CommentInput extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      input: ""
+    };
   }
+
+  onUpdate = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.addNewComment(this.state.input);
+    this.setState({
+      input: ""
+    });
+  };
+
   render() {
     return (
       <div className="comment-form">
@@ -18,6 +35,7 @@ class CommentInput extends React.Component {
             value={this.state.input}
             onChange={this.onUpdate}
           />
+          <button type="submit">Add comment</button>
         </form>
       </div>
     );
