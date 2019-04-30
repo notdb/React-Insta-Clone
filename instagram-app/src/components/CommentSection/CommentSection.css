@@ -1,0 +1,13 @@
+/* comment section css will go here */
+
+* {
+    box-sizing: border-box;
+}
+
+.post-img {
+    width: 465px;
+}
+
+.comment-section {
+    display:flex;
+}
