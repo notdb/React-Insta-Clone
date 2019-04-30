@@ -12,11 +12,23 @@ class PostContainer extends React.Component {
 
   componentDidMount() {
     let dummyObj = this.props.dummyObj;
-    this.setState = { dummy: dummyObj };
+    this.setState({ tummy: dummyObj });
+    console.log(this.state.tummy);
   }
+
+  addNewComment = event => {
+    console.log(this.state.tummy);
+
+    const newComment = [
+      ...this.state.tummy.comments,
+      { id: "4", username: "testUser", text: event }
+    ];
+    this.setState((this.state.tummy.comments = newComment));
+  };
 
   render() {
     let today = this.props.dummyObj.timestamp;
+    console.log(this.state);
     return (
       <div className="post-container">
         <header className="header">
@@ -36,7 +48,7 @@ class PostContainer extends React.Component {
             <CommentSection key={comment.id} comment={comment} />
           ))}
         </div>
-        <CommentInput />
+        <CommentInput addNewComment={this.addNewComment} />
       </div>
     );
   }
