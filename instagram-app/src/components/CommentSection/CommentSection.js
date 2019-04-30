@@ -5,7 +5,7 @@ function CommentSection(props) {
   return (
     <div className="comment-section">
       <p>
-        {props.comment.username} says: {props.comment.text}
+        <b>{props.comment.username}</b> {props.comment.text}
       </p>
     </div>
   );

@@ -3,6 +3,7 @@ import "./App.css";
 import dummyData from "./dummy-data";
 import SearchBar from "./components/SearchBar/SearchBar.js";
 import PostContainer from "./components/PostContainer/PostContainer.js";
+import PropTypes from "prop-types";
 
 /*
 function App() {
@@ -35,5 +36,21 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  dummy: PropTypes.shape({
+    id: PropTypes.string,
+    username: PropTypes.string,
+    thumbnailUrl: PropTypes.string,
+    imageUrl: PropTypes.string,
+    likes: PropTypes.number,
+    timestamp: PropTypes.string,
+    comments: PropTypes.array
+  })
+};
+
+App.defaultProps = {
+  dummy: []
+};
 
 export default App;

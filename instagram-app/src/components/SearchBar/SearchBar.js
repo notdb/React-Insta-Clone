@@ -3,7 +3,11 @@ import "./search-bar.css";
 
 function SearchBar() {
   return (
-    <div className="search-bar">Image Input will go here Icon Icon Icon</div>
+    <div className="search-bar">
+      <p>Logo Header</p>
+      <p>Input will go here</p>
+      <p>Icon Icon Icon</p>
+    </div>
   );
 }
 
