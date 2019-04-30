@@ -1,6 +1,7 @@
 import React from "react";
 import "./PostContainer.css";
 import CommentSection from "../CommentSection/CommentSection.js";
+import CommentInput from "./CommentInput.js";
 import moment from "moment";
 
 class PostContainer extends React.Component {
@@ -8,6 +9,12 @@ class PostContainer extends React.Component {
     super();
     this.state = {};
   }
+
+  componentDidMount() {
+    let dummyObj = this.props.dummyObj;
+    this.setState = { dummy: dummyObj };
+  }
+
   render() {
     let today = this.props.dummyObj.timestamp;
     return (
@@ -29,13 +36,7 @@ class PostContainer extends React.Component {
             <CommentSection key={comment.id} comment={comment} />
           ))}
         </div>
-        <div className="comment-form">
-          <p>Input form goes here</p>
-          <p>...</p>
-          {moment()
-            .startOf(today)
-            .fromNow()}
-        </div>
+        <CommentInput />
       </div>
     );
   }
