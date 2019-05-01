@@ -1,11 +1,12 @@
 import React from "react";
-import "./search-bar.css";
+import "./PostContainer.css";
 
-class SearchBar extends React.Component {
+class CommentInput extends React.Component {
   constructor() {
     super();
     this.state = {
-      input: ""
+      input: "",
+      count: 3
     };
   }
 
@@ -18,7 +19,7 @@ class SearchBar extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    this.props.searchFilter(this.state.input);
+    this.props.addNewComment(this.state.input);
     const newCount = 1;
     this.setState({
       input: "",
@@ -28,7 +29,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div className="search-bar">
+      <div className="comment-form">
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -44,5 +45,4 @@ class SearchBar extends React.Component {
     );
   }
 }
-
-export default SearchBar;
+export default CommentInput;
