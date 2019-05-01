@@ -26,6 +26,10 @@ class SearchBar extends React.Component {
     });
   };
 
+  logMeOut = () => {
+    localStorage.removeItem("user");
+  };
+
   render() {
     return (
       <div className="search-bar">
@@ -40,6 +44,9 @@ class SearchBar extends React.Component {
           />
           <button type="submit">Add comment</button>
         </form>
+        <button type="logout" onClick={this.logMeOut}>
+          Log Out
+        </button>
       </div>
     );
   }
