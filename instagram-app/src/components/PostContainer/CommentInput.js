@@ -5,7 +5,8 @@ class CommentInput extends React.Component {
   constructor() {
     super();
     this.state = {
-      input: ""
+      input: "",
+      count: 3
     };
   }
 
@@ -17,9 +18,12 @@ class CommentInput extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+
     this.props.addNewComment(this.state.input);
+    const newCount = 1;
     this.setState({
-      input: ""
+      input: "",
+      count: newCount
     });
   };
 

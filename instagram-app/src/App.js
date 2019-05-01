@@ -29,10 +29,23 @@ class App extends React.Component {
     this.setState({ dummy: dummyData });
   }
 
+  searchFilter = event => {
+    let emptyArray = [];
+    let newArray = this.state.dummy.map(obj => {
+      if (obj.username === event) {
+        emptyArray.push(obj);
+      }
+    });
+
+    this.setState({ dummy: emptyArray });
+    console.log(emptyArray);
+  };
+
   render() {
+    console.log(this.state.dummy[1]);
     return (
       <div className="App">
-        <SearchBar />
+        <SearchBar searchFilter={this.searchFilter} />
         {this.state.dummy.map(obj => (
           <PostContainer key={obj.timestamp} dummyObj={obj} />
         ))}
