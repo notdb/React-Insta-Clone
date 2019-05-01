@@ -1,12 +1,9 @@
 import React from "react";
-import "./App.css";
-import dummyData from "./dummy-data";
-import SearchBar from "./components/SearchBar/SearchBar.js";
-import PostContainer from "./components/PostContainer/PostContainer.js";
+import "../App.css";
+import dummyData from "../dummy-data";
+import SearchBar from "./SearchBar/SearchBar.js";
+import PostContainer from "./PostContainer/PostContainer.js";
 import PropTypes from "prop-types";
-import PostsPage from "./components/PostsPage";
-import Login from "./components/Login/Login";
-import withAuthenticate from "./components/authenticate/withAuthenticate.js";
 
 /*
 function App() {
@@ -20,9 +17,7 @@ function App() {
 export default App;
 */
 
-const ComponentFromWithAuthenticate = withAuthenticate(PostsPage)(Login);
-
-class App extends React.Component {
+class PostsPage extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -50,13 +45,16 @@ class App extends React.Component {
     console.log(this.state.dummy[1]);
     return (
       <div className="App">
-        <ComponentFromWithAuthenticate />
+        <SearchBar searchFilter={this.searchFilter} />
+        {this.state.dummy.map(obj => (
+          <PostContainer key={obj.timestamp} dummyObj={obj} />
+        ))}
       </div>
     );
   }
 }
 
-App.propTypes = {
+PostsPage.propTypes = {
   dummy: PropTypes.shape({
     id: PropTypes.string,
     username: PropTypes.string,
@@ -68,8 +66,8 @@ App.propTypes = {
   })
 };
 
-App.defaultProps = {
+PostsPage.defaultProps = {
   dummy: []
 };
 
-export default App;
+export default PostsPage;
