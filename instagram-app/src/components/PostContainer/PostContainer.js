@@ -2,7 +2,25 @@ import React from "react";
 import "./PostContainer.css";
 import CommentSection from "../CommentSection/CommentSection.js";
 import CommentInput from "./CommentInput.js";
-import moment from "moment";
+import styled from "styled-components";
+
+const ThumbImg = styled.img`
+  width: 472px;
+`;
+
+const ThumbImgTwo = styled.img`
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-left: 5px;
+`;
+
+const Header = styled.header`
+  display: flex;
+  align-content: center;
+`;
 
 class PostContainer extends React.Component {
   constructor(props) {
@@ -20,7 +38,7 @@ class PostContainer extends React.Component {
   addNewComment = event => {
     const newComment = [
       ...this.state.tummy.comments,
-      { id: Date.now(), username: "testUser", text: event }
+      { id: Date.now(), username: localStorage.getItem("user"), text: event }
     ];
     const newObj = {
       ...this.state.tummy,
@@ -56,15 +74,15 @@ class PostContainer extends React.Component {
   render() {
     return (
       <div className="post-container">
-        <header className="header">
-          <img
+        <Header>
+          <ThumbImgTwo
             className="thumb-img"
             src={this.props.dummyObj.thumbnailUrl}
             alt=""
           />
           <p>{this.props.dummyObj.username}</p>
-        </header>
-        <img className="post-img" src={this.props.dummyObj.imageUrl} alt="" />
+        </Header>
+        <ThumbImg src={this.props.dummyObj.imageUrl} alt="" />
         <div className="icons">
           <div className="row">
             <p>Icon</p>

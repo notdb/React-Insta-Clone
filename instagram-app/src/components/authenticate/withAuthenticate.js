@@ -17,7 +17,7 @@ const withAuthenticate = FirstComponent => SecondComponent =>
     }
 
     render() {
-      if (localStorage.getItem("user") == "doug") {
+      if (localStorage.getItem("user")) {
         return <FirstComponent />;
       } else {
         return <SecondComponent />;

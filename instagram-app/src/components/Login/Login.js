@@ -16,12 +16,11 @@ class Login extends React.Component {
   };
 
   handleSubmit = e => {
-    e.preventDefault();
     if (localStorage.getItem("user")) {
       localStorage.removeItem("user");
       this.setState({ isLoggedIn: false });
     } else {
-      localStorage.setItem("user", "doug");
+      localStorage.setItem("user", this.state.username);
       this.setState({ isLoggedIn: true });
     }
   };
