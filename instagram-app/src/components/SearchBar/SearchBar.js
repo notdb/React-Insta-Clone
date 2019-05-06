@@ -1,5 +1,24 @@
 import React from "react";
 import "./search-bar.css";
+import styled from "styled-components";
+import instalogo from "./instalogo.png";
+import logobar from "./logobar.png";
+
+const SearchBarDiv = styled.header`
+  display: flex;
+  justify-content: space-around;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  margin-top: 20px;
+  align-content: center;
+  height: 30px;
+  button {
+    border: none;
+    margin-left: 5px;
+  }
+`;
 
 class SearchBar extends React.Component {
   constructor() {
@@ -28,26 +47,29 @@ class SearchBar extends React.Component {
 
   logMeOut = () => {
     localStorage.removeItem("user");
+    window.location.reload();
   };
 
   render() {
     return (
-      <div className="search-bar">
-        <form onSubmit={this.handleSubmit}>
+      <SearchBarDiv>
+        <img src={instalogo} alt="logo" />
+        <StyledForm onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="input"
             id="what"
-            placeholder="Add a comment..."
+            placeholder="Type usernames here..."
             value={this.state.input}
             onChange={this.onUpdate}
           />
-          <button type="submit">Add comment</button>
-        </form>
-        <button type="logout" onClick={this.logMeOut}>
-          Log Out
-        </button>
-      </div>
+          <button type="submit">Filter Posts</button>
+          <button type="logout" onClick={this.logMeOut}>
+            Log Out
+          </button>
+        </StyledForm>
+        <img src={logobar} alt="another logo" />
+      </SearchBarDiv>
     );
   }
 }

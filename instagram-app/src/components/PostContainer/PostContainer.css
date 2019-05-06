@@ -10,7 +10,7 @@
     display:flex;
     align-content: center;
 }
-
+/*
 .thumb-img {
     border-radius: 50%;
     width: 35px;
@@ -19,7 +19,7 @@
     margin-top: 10px;
     margin-left: 5px;
 }
-
+*/
 
 .icons {
     display: flex;
